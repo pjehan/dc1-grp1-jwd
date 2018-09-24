@@ -8,7 +8,7 @@ $connection = new PDO("mysql:host=" . $db_host . ";dbname=" . $db_name, $db_user
     PDO::ATTR_EMULATE_PREPARES => false
 ]);
 
-// Chargement des fonctions dans le dossier "entities"s
+// Chargement des fonctions dans le dossier "entities"
 $files = scandir(__DIR__ . "/entities/");
 foreach ($files as $file) {
     $filepath = __DIR__ . "/entities/" . $file;

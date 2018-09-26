@@ -4,3 +4,6 @@ $db_host = "localhost";
 $db_name = "dc1_grp1_jwd";
 $db_user = "root";
 $db_pass = "root";
+
+$siteurl = "http://127.0.0.1/dc2/grp1/jean-webdesign/";
+$siteadmin = $siteurl . "admin/";

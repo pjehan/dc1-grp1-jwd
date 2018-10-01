@@ -9,3 +9,14 @@ function insertCategorie(string $titre) {
     $stmt->bindParam(':titre', $titre);
     $stmt->execute();
 }
+
+function updateCategorie(int $id, string $titre) {
+    global $connection;
+
+    $query = "UPDATE categorie SET titre = :titre WHERE id = :id";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':titre', $titre);
+    $stmt->execute();
+}

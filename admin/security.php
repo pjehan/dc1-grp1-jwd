@@ -21,4 +21,6 @@ if (isset($_SESSION['id'])) {
 
 if(!$user) {
     header('Location: login.php');
+} else if (!$user['admin']) {
+    header('Location: ../');
 }

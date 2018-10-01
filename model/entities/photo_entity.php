@@ -1,6 +1,6 @@
 <?php
 
-function getAllPhotos(): array {
+function getAllPhotos(int $limit = 999): array {
     global $connection;
 
     $query = "SELECT
@@ -10,9 +10,10 @@ function getAllPhotos(): array {
             FROM photo
             INNER JOIN categorie ON categorie.id = photo.categorie_id
             ORDER BY photo.date_creation DESC
-            LIMIT 6;";
+            LIMIT :limit;";
 
     $stmt = $connection->prepare($query);
+    $stmt->bindParam(":limit", $limit);
     $stmt->execute();
 
     return $stmt->fetchAll();

@@ -17,7 +17,7 @@ td.actions {
     justify-content: space-around;
 }
 
-td .img-thumbnail {
+.img-thumbnail {
     width: 75px;
     max-height: 75px;
 }

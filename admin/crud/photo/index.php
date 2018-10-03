@@ -49,7 +49,7 @@ require_once '../../layout/header.php';
             <tr>
                 <td><?php echo $photo['titre']; ?></td>
                 <td>
-                    <img src="../../../images/<?php echo $photo['image']; ?>" class="img-thumbnail">
+                    <img src="../../../uploads/<?php echo $photo['image']; ?>" class="img-thumbnail">
                 </td>
                 <td><?php echo $photo['categorie']; ?></td>
                 <td class="actions">

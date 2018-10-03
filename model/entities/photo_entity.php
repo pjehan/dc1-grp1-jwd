@@ -78,3 +78,40 @@ function getPhoto(int $id): array {
 
     return $stmt->fetch();
 }
+
+function insertPhoto(string $titre, string $image, string $description, int $categorie_id, array $tag_ids) {
+    /* @var $connection PDO */
+    global $connection;
+    
+    $query = "INSERT INTO photo (titre, image, nb_likes, date_creation, description, categorie_id) VALUES (:titre, :image, 0, NOW(), :description, :categorie_id)";
+    
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":titre", $titre);
+    $stmt->bindParam(":image", $image);
+    $stmt->bindParam(":description", $description);
+    $stmt->bindParam(":categorie_id", $categorie_id);
+    $stmt->execute();
+    
+    $id = $connection->lastInsertId();
+    
+    foreach ($tag_ids as $tag_id) {
+        insertPhotoHasTag($id, $tag_id);
+    }
+}
+
+function insertPhotoHasTag(int $photo_id, int $tag_id) {
+    /* @var $connection PDO */
+    global $connection;
+    
+    $query = "INSERT INTO photo_has_tag (photo_id, tag_id) VALUES (:photo_id, :tag_id)";
+    
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":photo_id", $photo_id);
+    $stmt->bindParam(":tag_id", $tag_id);
+    $stmt->execute();
+}
+
+
+
+
+
